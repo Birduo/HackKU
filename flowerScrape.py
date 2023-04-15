@@ -7,6 +7,12 @@ native_dict_file = open("native_plant_dict.txt", 'r')
 
 native_dict_text = native_dict_file.read()
 
+native_list = native_dict_text.split("\n")
+
+
+
+
+
 
 
 '''
