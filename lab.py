@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup as bs
 
 def scrapeFNA():
-    locations = ["Ala.", "Alaska", "Ariz.", "Ark.", "Calif.", "Colo.", "Conn.", "Del", "D.C.", "Fla.", "Ga.", "Hawaii", "Idaho", "Ill.", "Iowa", "Ind.", "Kans.", "Ky.", "La.", "Maine", "Mass.", "Md.", "Mich.", "Minn.", "Miss.", "Mo.", "Mont.", "N.C.", "N.H.", "N.J.", "Nebr.", "Nev.", "N.Mex.", "N.Dak.", "N.Y.", "Ohio", "Okla.", "Oreg.", "Pa.", "R.I.", "S.C.", "S.Dak.", "Tenn.", "Tex.", "Utah", "Va.", "Vt.", "Wash.", "Wis.", "W.Va.", "Wyo."]
+    locations = ["Ala.", "Alaska", "Ariz.", "Ark.", "Calif.", "Colo.", "Conn.", "Del.", "D.C.", "Fla.", "Ga.", "Hawaii", "Idaho", "Ill.", "Iowa", "Ind.", "Kans.", "Ky.", "La.", "Maine", "Mass.", "Md.", "Mich.", "Minn.", "Miss.", "Mo.", "Mont.", "N.C.", "N.H.", "N.J.", "Nebr.", "Nev.", "N.Mex.", "N.Dak.", "N.Y.", "Ohio", "Okla.", "Oreg.", "Pa.", "R.I.", "S.C.", "S.Dak.", "Tenn.", "Tex.", "Utah", "Va.", "Vt.", "Wash.", "Wis.", "W.Va.", "Wyo."]
 
     state_flowers = {}
     us_flowers = {}
