@@ -9,7 +9,7 @@ for line in native_dict_file:
     native_dict_list.append(native_dict_file.readline())
 
 native_dict = {}
-for i in range(len(native_dict_list)):
+for i in range(len(native_dict_list)): 
     native_dict_list[i] = native_dict_list[i].split('\t')
     native_dict[native_dict_list[i][0]] = {}
     native_dict[native_dict_list[i][0]]["url"] = native_dict_list[i][1]
@@ -27,8 +27,14 @@ def scrapeFlower():
         soup = BeautifulSoup(page.content, "html.parser")
         results = soup.find(id="mw-content-text")
         results_elem = results.find('span', class_="statement")
+        common_names = soup.find(id="content")
+        common_names_elem = common_names.find('span', "treatment-id-commonName")
         if results_elem != None:
             plant_info[flower] = {}
+            if common_names_elem != None:
+                plant_info[flower]["Common Name"] = common_names_elem.text
+            else:
+                plant_info[flower]["Common Name"] = "N/A"
             plant_info[flower]["description"] = results_elem.text
             plant_info[flower]["Native States"] = native_dict[flower]["Native States"]
     return plant_info
@@ -39,7 +45,7 @@ pd = scrapeFlower()
 file = open("flower_info.txt", 'w')
 
 for key, value in pd.items():
-    valueStr = f"{value['Native States']}\t{value['description']}"
+    valueStr = f"{value['Common Name']}\t{value['Native States']}\t{value['description']}"
     file.write(f'{key}\t{valueStr}\n')
 
 file.close()
