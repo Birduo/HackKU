@@ -20,8 +20,6 @@ for location in locations:
 
         OFFSET += 500
 
-        print("Key Length: ", KEYLEN)
-
         data.update(res["results"])
     
     state_flowers[location] = list(data.keys())
