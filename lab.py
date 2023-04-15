@@ -7,6 +7,7 @@ def scrapeFNA():
     state_flowers = {}
     us_flowers = {}
     for location in locations:
+        print(f'scraping {location}')
         # keep KEYLEN and OFFSET const
         KEYLEN = 500
         OFFSET = 0
@@ -18,16 +19,18 @@ def scrapeFNA():
             res = requests.get(url).json()
             keys = res["results"].keys()
 
-            for key in keys:
-                if key in data:
-                    break
-
             KEYLEN = len(keys)
+            #print(f'{OFFSET}')
 
             OFFSET += 500
 
+            for key in keys:
+                if key in data.keys():
+                    KEYLEN = 0
+
             data.update(res["results"])
             us_flowers.update(res['results'])
+
         
         state_flowers[location] = list(data.keys())
 
