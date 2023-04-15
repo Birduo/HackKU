@@ -1,7 +1,17 @@
 import requests
 from bs4 import BeautifulSoup
 
-native_dict = {"Abronia_fragrans": {"URL": "http://floranorthamerica.org/Abronia_fragrans"}}
+#native_dict = {"Abronia_fragrans": {"URL": "http://floranorthamerica.org/Abronia_fragrans"}}
+
+native_dict_file = open(file = "native_plant_dict.txt", 'r')
+
+native_dict_text = native_dict_file.read()
+
+
+
+'''
+native_dict_text = "{" + native_dict_text + "}"
+native_dict = eval(native_dict_text)
 
 def scrapeFlower():
     for flower in native_dict.keys():
@@ -13,3 +23,4 @@ def scrapeFlower():
         print(results_elem.text)
 
 scrapeFlower()
+'''
