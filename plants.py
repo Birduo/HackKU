@@ -13,11 +13,15 @@
 
 from flask import Flask
 
+from lab import scrapeFNA
+
 app = Flask(__name__)
 
-@app.route("/county/<county>")
-def local_area(county):
-    return f"<p>You entered: {county}</p>"
+plants = scrapeFNA()
+
+@app.route("/state/<state>")
+def local_area(state):
+    return f"<p>You entered: {state}</p>"
 
 @app.route("/")
 def home():
