@@ -3,7 +3,7 @@
 
 # DATA FORMAT
 # Input: Zip Code
-# URL: https://www.wildflower.org 
+# URL: f"http://floranorthamerica.org/Special:Ask/format%3Djson/sort%3D/order%3Dasc/offset%3D{OFFSET}/limit%3D500/-5B-5BDistribution::{location}-5D-5D/mainlabel%3D/prettyprint%3Dtrue/unescape%3Dtrue/searchlabel%3DJSON"
 
 # POTENTIAL IDEAS
 # NLP
