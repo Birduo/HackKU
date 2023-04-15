@@ -14,7 +14,6 @@ def removeNonNative():
                 else:
                     native_states = plant_dict[flower]['native_states']
                     native_states.append(key)
-                    print(native_states)
                     plant_dict[flower]['native_states'] = native_states
     for key, value in plant_dict.items():
         if 'native_states' in value.keys():
@@ -36,4 +35,5 @@ SciName : {
 pd = removeNonNative()
 file = open('native_plant_dict.txt', 'w')
 for key, value in pd.items():
-    file.write(f'{key} : {value}\n')
+    valueStr = f"{value['url']}\t{value['native_states']}"
+    file.write(f'{key}\t{valueStr}\n')
