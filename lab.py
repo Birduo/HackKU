@@ -44,12 +44,67 @@ def scrapeFNA():
     '''
 
     plant_dict = {}
+    abbreviationToWikiName = {
+        "Ala.":"Alabama", 
+        "Alaska":"Alaska", 
+        "Ariz.":"Arizona",
+        "Ark.":"Arkansas", 
+        "Calif.":"California", 
+        "Colo.":"Colorado", 
+        "Conn.":"Connecticut", 
+        "Del.":"Delaware", 
+        "D.C.": "Washington,_D.C.",
+        "Fla.":"Florida", 
+        "Ga.":"Georgia_(U.S._state)", 
+        "Hawaii" :"Hawaii", 
+        "Idaho":"Idaho", 
+        "Ill.":"Illinois", 
+        "Ind.":"Indiana", 
+        "Iowa":"Iowa", 
+        "Kans.": "Kansas", 
+        "Ky.":"Kentucky", 
+        "La.":"Louisiana", 
+        "Maine":"Maine", 
+        "Md.":"Maryland", 
+        "Mass.":"Massachusetts", 
+        "Mich.":"Michigan", 
+        "Minn.":"Minnesota", 
+        "Miss.":"Mississippi", 
+        "Mo.":"Missouri", 
+        "Mont.":"Montana", 
+        "Nebr.":"Nebraska", 
+        "Nev.":"Nevada", 
+        "N.H.":"New_Hampshire", 
+        "N.J.":"New_Jersey", 
+        "N.Mex.":"New_Mexico", 
+        "N.Y.":"New_York_(state)", 
+        "N.C.":"North_Carolina", 
+        "N.Dak.":"North_Dakota", 
+        "Ohio":"Ohio", 
+        "Okla.":"Oklahoma", 
+        "Oreg.":"Oregon", 
+        "Pa.":"Pennsylvania", 
+        "R.I.":"Rhode_Island", 
+        "S.C.":"South_Carolina", 
+        "S.Dak.":"South_Dakota", 
+        "Tenn.":"Tennessee", 
+        "Tex.":"Texas", 
+        "Utah":"Utah", 
+        "Vt.":"Vermont", 
+        "Va.":"Virginia", 
+        "Wash.":"Washington_(state)", 
+        "W.Va.":"West Virginia", 
+        "Wis.":"Wisconsin", 
+        "Wyo.":"Wyoming"
+    }
     for location in state_flowers.keys():
+        print(f"going through location: {location}")
         for flr in state_flowers[location]:
+            print(f"going through flower {flr}")
             if flr in plant_dict:
                 url = plant_dict[flr]['url']
                 statelist = plant_dict[flr]['state']
-                statelist.append(location)
+                statelist.append(abbreviationToWikiName[location])
                 plant_dict[flr] = {
                     'url': url,
                     'state': statelist
@@ -57,6 +112,7 @@ def scrapeFNA():
             else:
                 plant_dict[flr] = {
                     'url' : "http:" + us_flowers[flr]['fullurl'],
-                    'state' : [location]
+                    'state' : [abbreviationToWikiName[location]]
                 }
     return plant_dict
+
