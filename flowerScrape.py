@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 #native_dict = {"Abronia_fragrans": {"URL": "http://floranorthamerica.org/Abronia_fragrans"}}
 
-native_dict_file = open(file = "native_plant_dict.txt", 'r')
+native_dict_file = open("native_plant_dict.txt", 'r')
 
 native_dict_text = native_dict_file.read()
 
