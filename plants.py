@@ -13,13 +13,7 @@
 
 from flask import Flask
 
-from lab import scrapeFNA
-
 app = Flask(__name__)
-
-print("Scraping FNA!")
-plants = scrapeFNA()
-print("FNA scraped!")
 
 @app.route("/state/<state>")
 def local_area(state):
@@ -27,7 +21,7 @@ def local_area(state):
     <html>
         <body>
             <p>You entered: {state}</p>
-            <p>Here's your first plant!\n{plants[state][0]}</p>
+            <p>Here's your first plant!\n{list(plants.keys())[0]}</p>
         </body>
     </html>   
     """
