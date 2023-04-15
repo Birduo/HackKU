@@ -1,8 +1,9 @@
 import requests
 from bs4 import BeautifulSoup as bs
 
-locations = ["Kans."]
+locations = ["Ala.", "Alaska", "Ariz.", "Ark.", "Calif.", "Colo.", "Conn.", "Del", "D.C.", "Fla.", "Ga.", "Idaho", "Ill.", "Ind.", "Kans.", "Ky.", "La.", "Maine", "Mass.", "Md.", "Mich.", "Minn.", "Miss.", "Mo.", "Mont.", "N.C.", "N.H.", "N.J.", "Nebr.", "Nev", "N.Mex.", "N.Dak.", "N.Y.", "Ohio", "Okla.", "Oreg.", "Pa.", "R.I.", "S.C.", "S.Dak.", "Tenn.", "Tex.", "Utah", "Va.", "Vt.", "Wash.", "Wis.", "W.Va.", "Wyo."]
 
+len(locations)
 state_flowers = {}
 for location in locations:
     # keep KEYLEN and OFFSET const
@@ -35,3 +36,4 @@ soup = bs(flower.content, "html.parser")
 
 
 print(state_flowers)
+print(state_flowers.keys())
