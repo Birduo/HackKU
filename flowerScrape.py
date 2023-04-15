@@ -45,7 +45,7 @@ pd = scrapeFlower()
 file = open("flower_info.txt", 'w')
 
 for key, value in pd.items():
-    valueStr = f"{value['Common Name']}\t{value['Native States']}\t{value['description']}"
+    valueStr = f"{value['Common Name']}\t{value['Native States'].strip()}\t{value['description'].strip()}"
     file.write(f'{key}\t{valueStr}\n')
 
 file.close()
