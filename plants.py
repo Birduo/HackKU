@@ -17,11 +17,20 @@ from lab import scrapeFNA
 
 app = Flask(__name__)
 
+print("Scraping FNA!")
 plants = scrapeFNA()
+print("FNA scraped!")
 
 @app.route("/state/<state>")
 def local_area(state):
-    return f"<p>You entered: {state}</p>"
+    return f"""
+    <html>
+        <body>
+            <p>You entered: {state}</p>
+            <p>Here's your first plant!\n{plants[state][0]}</p>
+        </body>
+    </html>   
+    """
 
 @app.route("/")
 def home():
