@@ -17,6 +17,11 @@ def scrapeFNA():
 
             res = requests.get(url).json()
             keys = res["results"].keys()
+
+            for key in keys:
+                if key in data:
+                    break
+
             KEYLEN = len(keys)
 
             OFFSET += 500
