@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 flower_file = open("native_plant_dict.txt", 'r')
 
 flower_list = []
-
+flower_dict = {}
 for line in flower_file:
     flower_list.append(flower_file.readline())
 
@@ -24,7 +24,8 @@ def scrapeImages():
         soup = BeautifulSoup(page.content, "html.parser")
         results = soup.find(id="mw-content-text")
         images = results.find("img")
-        
-        print(images['src'])
+        if link.replace("https://en.wikipedia.org/wiki/", "") in images['src']:
+            flower_dict[link.replace("https://en.wikipedia.org/wiki/", "")] = "https:" + images['src']
+    print(flower_dict)
 
 scrapeImages()
