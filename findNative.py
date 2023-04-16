@@ -31,9 +31,9 @@ SciName : {
 '''
 
 
-
-pd = removeNonNative()
-file = open('native_plant_dict.txt', 'w')
-for key, value in pd.items():
-    valueStr = f"{value['url']}\t{value['native_states']}"
-    file.write(f'{key}\t{valueStr}\n')
+if __name__ == "__main__":
+    pd = removeNonNative()
+    file = open('native_plant_dict.txt', 'w')
+    for key, value in pd.items():
+        valueStr = f"{value['url']}\t{value['native_states']}"
+        file.write(f'{key}\t{valueStr}\n')

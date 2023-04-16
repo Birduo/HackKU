@@ -6,14 +6,21 @@ client = weaviate.Client(
 )
 
 client.schema.get()
-'''
+
 plant_obj = {
     'class' : "Plant",
-    'vectorizer' : "text2vec-contextionary"
+    'vectorizer' : "text2vec-contextionary",
+    "invertedIndexConfig": {
+            "bm25": {
+            "b": 0.75,
+            "k1": 1.2
+            }
+        },
+        
 }
 
 
-client.schema.create_class(plant_obj)'''
+client.schema.create_class(plant_obj)
 
 
 '''
@@ -49,7 +56,7 @@ for line in data_file:
     linelist = line.strip().split('\t')
     data.append({
         'name' : linelist[0],
-        'description' : linelist[3].replace('â€“', '-').replace("Ã—", '*'),
+        'description' : linelist[3].replace('\u2013', '-').replace("\u00d7", '*'),
         'states' : linelist[2],
         'common_name' : linelist[1]
     })
