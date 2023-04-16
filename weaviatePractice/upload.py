@@ -58,7 +58,8 @@ for line in data_file:
         'name' : linelist[0],
         'description' : linelist[3].replace('\u2013', '-').replace("\u00d7", '*'),
         'states' : linelist[2],
-        'common_name' : linelist[1]
+        'common_name' : linelist[1],
+        'image_url': linelist[4]
     })
 data_file.close()
 
@@ -71,7 +72,8 @@ with client.batch as batch:
             "name": datapoint["name"],
             "description": datapoint["description"],
             "states": datapoint["states"],
-            'common_name' : datapoint['common_name']
+            'common_name' : datapoint['common_name'],
+            'image_url':datapoint['image_url']
         }
 
         client.batch.add_data_object(properties, "Plant")
