@@ -11,7 +11,7 @@ bm25 = {
 }
 result = (
     client.query
-    .get("Plant", ["name", "description", "states", "common_name", "image-url"])
+    .get("Plant", ["name", "description", "states", "common_name", "image_url"])
     .with_bm25(bm25['query'], bm25['properties'])
     .with_limit(10)
     .do()
