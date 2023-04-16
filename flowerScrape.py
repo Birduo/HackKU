@@ -20,7 +20,7 @@ native_dict = {}
 flower_dict = {}
 flower_names = []
 print("Creating dictionaries")
-for i in range(len(native_dict_list)):
+for i in range(len(native_dict_list)): #len(native_dict_list)
     print(i)
     native_dict_list[i] = native_dict_list[i].split('\t')
     flower_list[i] = flower_list[i].split('\t')
@@ -57,14 +57,28 @@ def scrapeFlower():
         soup = BeautifulSoup(page.content, "html.parser")
         results = soup.find(id="mw-content-text")
         results_elem = results.find('span', class_="statement")
+
+        phenos_elems = results.find('div', class_="treatment-info")
+        phenos_elem = phenos_elems.find_next('br')
+        elems_text = phenos_elems.text
+        if elems_text != None:
+            wanted_elems = elems_text.split("\n")
+            wanted_elem = wanted_elems[1]
+        else:
+            wanted_elem = "N/A"
+        
         common_names = soup.find(id="content")
         common_names_elem = common_names.find('span', "treatment-id-commonName")
+
+
+        
         if results_elem != None:
             plant_info[flower] = {}
             if common_names_elem != None:
                 plant_info[flower]["Common Name"] = common_names_elem.text
             else:
                 plant_info[flower]["Common Name"] = "N/A"
+            plant_info[flower]["Phenology"] = wanted_elem
             plant_info[flower]["description"] = results_elem.text
             plant_info[flower]["Native States"] = native_dict[flower]["Native States"]
             if flower.replace(" ", "_") in flower_dict.keys():
@@ -86,7 +100,7 @@ pd = scrapeFlower()
 file = open("flower_info.txt", 'w')
 
 for key, value in pd.items():
-    valueStr = f"{value['Common Name']}\t{value['Native States'].strip()}\t{value['description'].strip()}\t{value['Image']}"
+    valueStr = f"{value['Common Name']}\t{value['Native States'].strip()}\t{value['description'].strip()}\t{value['Image']}\t{value['Phenology']}"
     file.write(f'{key}\t{valueStr}\n')
 
 file.close()

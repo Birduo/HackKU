@@ -49,7 +49,7 @@ native_dict = {}
 flower_dict = {}
 flower_names = []
 print("Creating dictionaries")
-for i in range(10): #len(native_dict_list)
+for i in range(1): #len(native_dict_list)
     print(i)
     native_dict_list[i] = native_dict_list[i].split('\t')
     flower_list[i] = flower_list[i].split('\t')
@@ -69,8 +69,12 @@ def scrapeFlower():
         results = soup.find(id="mw-content-text")
         results_elem = results.find('span', class_="statement")
 
-        phenos_elem = results.find('div', class_="treatment-info")
-        print(phenos_elem.text)
+        phenos_elems = results.find('div', class_="treatment-info")
+        phenos_elem = phenos_elems.find_next('br')
+        elems_text = phenos_elems.text
+        wanted_elems = elems_text.split("\n")
+        wanted_elem = wanted_elems[1]
+        print(wanted_elem)
         '''
         common_names = soup.find(id="content")
         common_names_elem = common_names.find('span', "treatment-id-commonName")
@@ -87,3 +91,4 @@ def scrapeFlower():
             else:
                 plant_info[flower]["Image"] = "N/A"
 '''
+scrapeFlower()
