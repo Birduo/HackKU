@@ -39,8 +39,9 @@ for link in flower_links:
     page = requests.get(link)
     soup = BeautifulSoup(page.content, "html.parser")
     results = soup.find(id="mw-content-text")
+    results = results.find('table', class_="infobox biota")
     images = results.find("img")
-    if link.replace("https://en.wikipedia.org/wiki/", "") in images['src']:
+    if images != None and "wikimedia.org" in images['src'] and "Red_Pencil" not in images['src']:
         flower_dict[link.replace("https://en.wikipedia.org/wiki/", "")] = "https:" + images['src']
     else:
         flower_dict[link.replace("https://en.wikipedia.org/wiki/", "")] = None
