@@ -18,5 +18,4 @@ result = (
 )
 
 results = result['data']['Get']['Plant']
-for result in results:
-    print(result)
+print(results)
